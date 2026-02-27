@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: cicd-472-sv-book
 spec:
+  type: NodePort
   selector:
     app: 472-cicd-book
   ports:
     - protocol: TCP
-      port: 38090      # Port accessible outside the cluster
-      targetPort: 8090 # Port inside the container
-  type: NodePort
+      port: 8090       # Port ของ Service ภายใน Cluster
+      targetPort: 8090 # Port ที่แอปใน Container เปิดไว้จริง
+      nodePort: 30090  # Port ใช้เข้าผ่าน localhost:30090
